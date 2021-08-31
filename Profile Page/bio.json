@@ -1,0 +1,161 @@
+{
+    "basics": {
+      "name": "Matthew Calulot",
+      "label": "Shidler Undergraduate",
+      "picture": "https://mattehue808.github.io/images/PXL_20210522_015839386.jpg",
+      "email": "calulotm@hawaii.edu",
+      "phone": "808-429-4945",
+      "website": "https://mattehue808.github.io/",
+      "summary": "I am studying for a Bachelors in Marketing in the Shidler College of Business at the University of Hawaii. I expect to graduate in Spring, 2023.",
+      "location": {
+        "address": "94-1046 Hoohele St",
+        "postalCode": "96797",
+        "city": "Waipahu",
+        "countryCode": "USA",
+        "region": "Hawaii"
+      },
+      "profiles": [
+        {
+          "network": "github",
+          "username": "mattehue808",
+          "url": "https://github.com/MatteHue808"
+        },
+        {
+          "network": "linkedin",
+          "username": "Matthew Calulot",
+          "url": "https://www.linkedin.com/in/matthew-calulot-6490a0218/"
+        },
+        {
+          "network": "twitter",
+          "username": "matte_hue808",
+          "url": "https://twitter.com/matte_hue808"
+        },
+        {
+          "network": "instagram",
+          "username": "matte.huec",
+          "url": "https://www.instagram.com/matte.huec/"
+        }
+      ]
+    },
+    "interests": [
+      {
+        "name": "writing",
+        "keywords": [
+        ]
+      },
+      {
+        "name": "guitar",
+        "keywords": [
+        ]
+      },
+      {
+        "name": "technology",
+        "keywords": [
+        ]
+      }
+    ],
+    "skills": [
+      {
+        "name": "Technical Skills",
+        "level": "",
+        "keywords": [
+          "Microsoft Excel",
+          "Microsoft Word",
+          "Microsoft Powerpoint",
+          "Canva",
+          "Google Workspace"
+        ]
+      },
+      {
+        "name": "Soft Skills",
+        "level": "",
+        "keywords": [
+          "Writing and Editing",
+          "Academic Proofreading",
+          "Customer Service",
+          "Quick Learner",
+          "Interpersonal Communication"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "University of Hawaii, Honolulu, HI",
+        "area": "Marketing (expected Spring, 2023)",
+        "studyType": "B.A.",
+        "startDate": "2019-08-23",
+        "endDate": "Present",
+        "gpa": "3.98",
+        "courses": [
+        ]
+      }
+    ],
+    "work": [
+      {
+        "company": "Levi's",
+        "position": "Sales Stylist",
+        "website": "",
+        "startDate": "October 2018",
+        "endDate": "August 2019",
+        "summary": "Part-time sales stylist at the Waikele Outlet Store",
+        "highlights": [
+          "Identified clients’ needs and helped find clothing that suits their body types.",
+          "Provided product details including fabrics, wash care, instructions, prices, and discounts."
+        ]
+      },
+      {
+        "company": "Great River Learning",
+        "position": "Online Textbook Editor",
+        "website": "",
+        "startDate": "May 2020",
+        "endDate": "September 2020",
+        "summary": "Worked as a student editor and proofreader for a business law professor",
+        "highlights": [
+          "Formulated multiple choice and short answer questions for future students to answer through online quizzes.",
+          "Collaborated with a law professor to create new online content related to the subject matter."
+        ]
+      }
+    ],
+    "volunteer": [
+      {
+        "organization": "Hawaii Literacy Bookmobile",
+        "website": "https://www.hawaiiliteracy.org/bookmobile",
+        "position": "Bookmobile Volunteer Helper",
+        "startDate": "2019",
+        "endDate": "2020",
+        "summary": "Assisted with duties for Hawaii Literacy's Bookmobile program in Honolulu.",
+        "highlights": [
+          "Assisted manager with general maintenance and supervision of the Bookmobile bus.",
+          "Read stories, offer homework tutoring, and recreational activities to more than 40 kids in low income neighborhoods grade K-6th.",
+          "Tracked reading time and facilitated discussion between kids after school."
+        ]
+      },
+      {
+        "organization": "International Business Organization",
+        "website": "https://www.ibouhm.com/",
+        "position": "Professional organization involvement",
+        "startDate": "2019",
+        "endDate": "2021",
+        "summary": "Active club member and later, executive board member",
+        "highlights": [
+          "Active Member, IBO, 2019-Present",
+          "Director of Philanthropy, IBO, Fall 2020",
+          "Director of International Affairs, IBO, UH Manoa, Spring 2021"
+        ]
+      }
+    ],
+    "awards": [
+      {
+        "title": "Dean's List",
+        "date": "2019-Present",
+        "awarder": "University of Hawaii at Manoa",
+        "summary": ""
+      }
+    ],
+    "references": [
+      {
+        "name": "Available upon request",
+        "reference": ""
+      }
+    ]
+  }
