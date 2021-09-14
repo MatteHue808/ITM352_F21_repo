@@ -1,0 +1,30 @@
+/* General */  
+body {
+    width: 800px; 
+    margin: 0 auto;
+}
+/* Typography */  
+main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+/* block styling */  
+
+h1 {
+    text-align: center;
+}
+/* Form styling */  
+div {
+    border: 5px solid black;
+    display: flex;
+    background-image: url("C:\Users\Matthew\OneDrive\Documents\GitHub\ITM352_F21_repo\SmartPhoneProducts1\Images\phone_globe.jpg");
+}
+/* Styling the products display */ 
+img {
+    height: 200px;
+    width: 200px;
+}
+
+
+
