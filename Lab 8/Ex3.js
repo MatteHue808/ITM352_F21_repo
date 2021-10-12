@@ -3,7 +3,7 @@ var num_products = 5;
 var count = 0;
 
 for(var count = 1; eval("typeof name"+count) != 'undefined'; count++) {
-    /* if(count> num_products/2) {
+     if(count> num_products/2) {
         console.log("Don't ask for anything else!");
         process.exit();
         // break;
@@ -12,6 +12,6 @@ for(var count = 1; eval("typeof name"+count) != 'undefined'; count++) {
         console.log(`Item #${count} is sold out!`);
         continue;
     }
-    console.log(`${count}. ${eval('name'+count)}`); */
+    console.log(`${count}. ${eval('name'+count)}`); 
 }
 console.log("That's all we have! " + count);
