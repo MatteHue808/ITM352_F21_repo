@@ -27,7 +27,6 @@
 their prices, and their totals */
 
 // Product Data
-
 var product_quantities = [0,2,3,4,5];
 // array of all products
 // corresponds to product_quantities array
@@ -74,6 +73,7 @@ var product_quantities = [0,2,3,4,5];
 product1.quantity = 0;
 // add SKU$
 product1["SKU#"] = 1234;
+product1.splice (product1["SKU#"]-1)
 
 // Compute extended prices
     var extended_price1 = product1_quantities[0]*product1.price;
