@@ -11,7 +11,7 @@ function checkIt(item, index) {
     console.log(`part ${index} is ${(isStringNonNegInt(item)?'a':'not a')} quantity`);
 }
 
-checkIt.forEach(parts) // Exercise 6a
+parts.forEach(checkIt) // Exercise 6a
 
 parts.forEach((item, index) => {console.log(`part ${index} is ${(isStringNonNegInt(item)?'a':'not a')} quantity`);});
 
