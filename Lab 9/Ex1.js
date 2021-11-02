@@ -12,7 +12,7 @@ step6 = step4 + step3;
 step7 = 13 + step6;
 step8 = step7;
 step9 = step8 - 1; // not a leap year
-step10= step9 % 7;
+step10= step9 % 7; // Born on Sunday
 
 console.log(step10);
 
