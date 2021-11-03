@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Beginning amount in pennies
+            var amount = 175
+
+        // Max number of quarters
+            var quarters = parseInt(amount/25);
+
+        // Max number of dimes from leftover
+            var leftovers = amount%25;
+            var dimes = parseInt(leftovers/10);
+
+        // Max numbers of nickles from leftover
+            var leftovers = amount%10;
+            var nickles = parseInt(leftovers/5);
+
+        // Remaining pennies left
+            var pennies = amount%5;
+
+        console.log(quarters, dimes, nickles, pennies)
+    </script>
+</body>
+</html>
