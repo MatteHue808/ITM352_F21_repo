@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    let params = (new URL(document.location)).searchParams;
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="quantity_form" action="" method="POST"> 
+    <label>quantity desired:</label>
+    <input name="quantity_textbox1" type="text" onkeyup="checkQuantityTextbox(this, qty_textbox_message1);">
+    <span id='qty_textbox_message1'>Enter a quantity</span>
+    <br>
+    <input type="submit" value="Purchase">
+</form>
+</body>
+</html>
+
+<script>
+    
+    function checkQuantityTextbox(theTextbox, theMsgSpan) {
+        // Is the textbox value a non-neg int?
+        var errors_array = isStringNonNegInt(theTextbox.value, true)
+        theMsgSpan.innerHTML = errors_array.join() 
+    }
+
+    function isStringNonNegInt(q, returnErrors = false) {
+        // Checks if a string q is a non-neg integer. If returnErrors is true, the array of errors is returned, otherwise, returns true if q is a non-neg int. 
+        errors = []; // assume no errors at first
+        if (q == '') q = 0
+        if (Number(q) != q) errors.push('Not a number!'); // Check if string is a number value
+        else {
+            if (q < 0) errors.push('Negative value!'); // Check if it is non-negative 
+            if (parseInt(q) != q) errors.push('Not an integer!'); // Check that it is an integer 
+            }
+
+        return returnErrors ? errors : (errors.length == 0);
+    }
+
+function displayPurchase() {
+    var qty = quantity_textbox1.value;
+    var err = isStringNonNegInt(qty, true);
+    if(err.length == 0) {
+        document.getElementsByTagName('body')[0].innerHTML = `Thank for you for ordering ${qty} things!`;
+    }
+    else {
+        qty_textbox_message1.innerHTML = `<font color="red">${err.join(' ')} Enter a valid quantity!</font>`;
+    }
+}
+
+</script>
+
+<script>
+    if (params.has('quantity_textbox1')) {
+        quantity_form['quantity_textbox1'].value = params.get('quantity_textbox1');
+        checkQuantityTextbox(quantity_form["quantity_textbox1"]);
+        if(params.get('quantity_textbox1') > 0 ) {
+            window.location.href = "display_purchase.html" + document.location.search;
+        }
+} 
+</script>
