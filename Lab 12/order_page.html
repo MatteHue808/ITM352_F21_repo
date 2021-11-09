@@ -27,7 +27,7 @@
     function checkQuantityTextbox(theTextbox, theMsgSpan) {
         // Is the textbox value a non-neg int?
         var errors_array = isStringNonNegInt(theTextbox.value, true)
-        theMsgSpan.innerHTML = errors_array.join() 
+        theMsgSpan.innerHTML = errors_array.join(" ") 
     }
 
     function isStringNonNegInt(q, returnErrors = false) {
