@@ -1,0 +1,39 @@
+{"products_array": [
+    {
+        "product": "Lamy Safari Fountain Pen",
+        "brand": "LAMY",
+        "price": 29.99,
+        "quantity_available": 10,
+        "img": "https://static2.jetpens.com/images/a/000/187/187170.jpg?auto=format&ba=middle%2Ccenter&balph=3&blend64=aHR0cDovL3d3dy5qZXRwZW5zLmNvbS9pbWFnZXMvYXNzZXRzL3dhdGVybWFyazIucG5n&bm=difference&bs=inherit&chromasub=444&fm=jpg&mark64=aHR0cDovL3d3dy5qZXRwZW5zLmNvbS9pbWFnZXMvYXNzZXRzL3dhdGVybWFyazEucG5n&markalign=top%2Cright&markalpha=30&markscale=16&q=90&usm=20&w=1200&s=1a7203723d676513b31e09cc46135889"
+    },
+
+    {
+        "product": "TWSBI ECO Clear Fountain Pen",
+        "brand": "TWSBI",
+        "price": 32.99,
+        "quantity_available": 12,
+        "img": "https://cdn.shopify.com/s/files/1/0535/9633/products/ecoclear_1024x1024.png?v=1475166920"
+    },
+    {
+        "product": "Kaweco Brass Sport Fountain Pen",
+        "brand": "Kaweco",
+        "price": 72.99,
+        "quantity_available": 6,
+        "img": "https://d15bv9e9f3al6i.cloudfront.net/imgs/products/cp/950_constW/KW43592-ZZZ~Kaweco-AL-Sport-Fountain-Pen-Brass_P1.jpg"
+    },
+    {
+        "product": "Platinum #3766 Century Fountain Pen",
+        "brand": "Platinum",
+        "price": 175.00,
+        "quantity_available": 4,
+        "img": "https://nibsmith.com/wp-content/uploads/2018/09/platinum-3776-Laurel-green-fountain-pen-nibsmith.jpg"
+    },
+    {
+        "product": "Sailor 1911 Standard Fountain Pen",
+        "brand": "Sailor",
+        "price": 225.00,
+        "quantity_available": 3,
+        "img": "https://d15bv9e9f3al6i.cloudfront.net/imgs/products/cp/950_constW/SR60957-ZZZ~Sailor-1911-Standard-Fountain-Pen-Black-with-Gold-Trim-21K-Nib_P1.jpg"
+    }
+]
+}
