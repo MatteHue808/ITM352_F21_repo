@@ -1,0 +1,56 @@
+/*Used Online template from https://htmlpdfapi.com/blog/free_html5_invoice_templates Example 2*/
+/*Formatting the body to display the background image for a consistant theme and setting the colors*/
+body {
+    position: relative;
+    width: 21cm;  
+    height: 29.7cm; 
+    margin: 0 auto; 
+    color: #001028;
+    background: #FFFFFF; 
+    font-family: Arial, sans-serif; 
+    font-size: 12px; 
+    font-family: Arial;
+    background: url(./images/starry.jpg)
+  }
+  
+  header {
+    padding: 10px 0;
+    margin-bottom: 30px;
+  }
+  /*Formatting the thank you message to make it standout*/
+  h1 {
+    color: black;
+    font-size: 2.4em;
+    line-height: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 20px 0;
+    background-color: palevioletred;
+  }
+  /*Formatt the table. Remove borders and increase the margins*/
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+  }
+  /*display an alternating color for the table*/
+  table tr:nth-child(2n-1) td {
+    background: #FADADD;
+  }
+  /*format the individual table cells*/
+  table td {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    font-size: 14px;
+  }
+  /*formatting the table headings. Different color to make it stand out*/
+  table th {
+    padding: 5px 20px;
+    background-color: palevioletred;
+    color:black;
+    border-bottom: 1px solid #C1CED9;      
+    font-size: 16px;
+  }
+  

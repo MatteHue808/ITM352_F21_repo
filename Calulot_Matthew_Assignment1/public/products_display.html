@@ -1,0 +1,109 @@
+<script>
+    // Retrieves query string from any submissions
+    let params = (new URL(document.location)).searchParams;
+    GET = {};
+    params.forEach(function (value, key) { GET[key] = value });
+
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Retrieve product data from products_data.js -->
+    <script src="./product_data.js" type="text/javascript"></script> 
+    <!-- Retrieved style template from w-3 schools // Modified font to be Merriweather instead of Karma // -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
+    <title>Matt's Pen Emporium</title>
+</head>
+<body>
+
+<!-- Format style for product display page -->
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Merriweather"}
+        .w3-bar-block .w3-bar-item {padding:20px}
+    </style>
+      
+<!-- Creating the header -->
+<div class="w3-top">
+    <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+      <div class="w3-center w3-padding-16" style="background-color:#A52A2A; border: 2px solid goldenrod; color:whitesmoke"><b>Pens for Every Budget!</b></div>
+    </div>
+  </div>
+
+<!-- Set background to productbackground.jpg  -->
+<body style="background-image: url(images/productbackground.jpg);  background-repeat: no-repeat; background-size:cover;">
+
+<!-- // Do a post request to quantity_form, any data in this form (keys and values) will be put into post values --> 
+<form name="quantity_form" action="/purchase" method="POST">  
+
+<!-- Write page content (products and prices) // Loop to write values is taken from SmartPhoneProducts3-->
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px"></div>
+<script>
+    for (i = 0; i < products_array.length; i++)
+    document.write(`
+            <div class="w3-center" style="color: whitesmoke">
+                <img src="${products_array[i]['img']}"style="width:300px; height:300px; border: 3px solid #A52A2A; border-radius: 3px >
+                <div style="width=300px">
+                <h3><u>${products_array[i]['product']}</u></h3>
+                <p>Brand: ${products_array[i]['brand']}</p>
+                <p>Price: $${products_array[i]['price']}</p>
+                <p>Quantity Left: ${products_array[i]['quantity_available']}</p>
+                
+            <label>Quantity:</label>
+            <input type="text" 
+                name="quantity${i}" 
+                onkeyup="checkQuantityTextbox(this, quantity${i}_message);">
+            <span id='quantity${i}_message'>Enter a quantity</span></p>
+              `)
+</script>
+</div>
+<!--Make a submit button named Purchase and style it to match the head-->
+<input type="submit" name="submit_button" value="Purchase"
+style="height:100px; 
+width:300px; 
+margin:auto 0; 
+text-align: center; 
+background-color: #A52A2A; 
+font-size: 35px;  
+color: white;
+border: 2px solid goldenrod;
+font-weight: 700;">
+
+<footer>
+    <h1>
+        The ink must flow!
+    </h1>
+
+<script>
+
+// Functions from /public/order_page.html in Lab 13
+
+    // Checks if a string q is a non-neg integer. If returnErrors is true, the array of errors is returned, otherwise, returns true if q is a non-neg int. 
+    function isStringNonNegInt(q, returnErrors = false) {
+        errors = []; // assume no errors at first
+        if (q == '') q = 0
+        if (Number(q) != q) errors.push('<font color="#A52A2A"> Not a number!</font>'); // Check if string is a number value
+        else {
+            if (q < 0) errors.push('<font color="#A52A2A"> Negative value!</font>'); // Check if it is non-negative 
+            if (parseInt(q) != q) errors.push('<font color="#A52A2A"> Not an integer!</font>'); // Check that it is an integer 
+            }
+            return returnErrors ? errors : (errors.length == 0);
+    }
+
+    // Is the textbox value a non-neg int?
+    function checkQuantityTextbox(theTextbox, theMsgSpan) {
+        // Is the textbox value a non-neg int?
+        var errors_array = isStringNonNegInt(theTextbox.value, true)
+        theMsgSpan.innerHTML = errors_array.join(" ") 
+    }
+
+</script>
+
+</form>
+</footer>
+</body>
+</html>
