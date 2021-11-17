@@ -19,10 +19,13 @@ app.all('*', function (request, response, next) {
 
  //if there are quantities and there are no error display the invoice if not then alert 
     // Assume no errors at first
+    let quantityavailable = products_array[0]['quantity_available']
     var errorsfound = false;
     // Assume no quantities at first
     var quantitiesfound = false;
-    // Check if no errors if error true, check if has quantities if there are, then true (modified function in Invoice 4 WOD)
+    // Assume that all items are in stock at first
+    var stock = true
+    // Check if no errors, if error is false, check if has quantities if there are, check if products are in stock (modified function in Invoice 4 WOD)
     for (i in products_array) {
         quantity = request.body[`quantity${i}`];
         if (isStringNonNegInt(quantity) == false) {
@@ -31,17 +34,16 @@ app.all('*', function (request, response, next) {
         if(quantity > 0) {
             quantitiesfound = true;
         }
+        if(quantity > quantityavailable)
+            stock = false
     }
-    
     //If quantities are found and no errors are found in the textbox, then generate an invoice, otherwise, send an error alert!
-        if (errorsfound == false && quantitiesfound == true) {
+        if (errorsfound == false && quantitiesfound == true && stock == true) {
         generate_item_rows(request.body, response);
             } else{
                 response_string="<script> alert('Invalid quantities detected. Please review your purchase.');window.history.go(-1);</script>";
                 response.send(response_string);
             }
-
-            
 });
  
  // Routes the GET requests to the public directory
@@ -66,7 +68,7 @@ function generate_item_rows(POST, response) {
                 subtotal = subtotal + extended_price;
                 invoice_rows += (`
                 <tr>
-                <td style="text-align: left;">${products_array[i].product} ${products_array[i].brand}</td>
+                <td style="text-align: left;">${products_array[i].product}</td>
                 <td align="center">${quantity}</td>
                 <td style="text-align: center">\$${products_array[i].price}</td>
                 <td style="text-align: right;">\$${extended_price.toFixed(2)}</td>
