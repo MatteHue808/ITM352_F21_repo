@@ -96,7 +96,6 @@ font-weight: 700;">
 
     // Is the textbox value a non-neg int?
     function checkQuantityTextbox(theTextbox, theMsgSpan) {
-        // Is the textbox value a non-neg int?
         var errors_array = isStringNonNegInt(theTextbox.value, true)
         theMsgSpan.innerHTML = errors_array.join(" ") 
     }

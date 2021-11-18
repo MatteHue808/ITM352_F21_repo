@@ -2,7 +2,7 @@ var data = require('./public/product_data.js');// Loads products_data.js
 var express = require('express'); // Enables express module 
 var app = express(); // Sets the express module as the app 
 var products_array = data.products_array;// Defines products_array variables
-var fs = require('fs');// Load fs model to allow server.js to use an template (referenced at bottom)
+var fs = require('fs');// Load fs module to allow server.js to use a template (referenced at bottom)
 
 // Monitors all requests
 app.all('*', function (request, response, next) {
@@ -99,7 +99,7 @@ function generate_item_rows(POST, response) {
 
     }
 } 
-// Function from info_server_Ex5.js
+// Function from Lab 13, info_server_Ex5.js
 function isStringNonNegInt(q, returnErrors = false) {
     // Checks if a string q is a non-neg integer. If returnErrors is true, the array of errors is returned, otherwise, returns true if q is a non-neg int. 
     errors = []; // assume no errors at first
