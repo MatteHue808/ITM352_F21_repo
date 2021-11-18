@@ -17,7 +17,7 @@
   <table>
     <tbody>
     <div>
-    <!--Heading-->
+    <!--Headings of each element-->
       <tr>
         <th style="text-align: center;" width="43%">Item</th>
         <th style="text-align: center;" width="11%">Quantity</th>
@@ -25,7 +25,8 @@
         <th style="text-align: center;" width="54%">Extended Price</th>
       </tr>
     </div>
-    <!--Compute the amounts using the server-->
+
+<!--Compute the amounts using the server-->
     ${invoice_rows}
 
       <tr>
@@ -33,34 +34,34 @@
       </tr>
       <tr>
         <td style="text-align: left;" colspan="3" width="67%">Sub-total</td>
-        <!--Subtotal-->
+          <!--Subtotal-->
         <td width="54%" style="text-align: right;">$${subtotal.toFixed(2)}
         </td>
       </tr>
       <tr>
         <td style="text-align: left;" colspan="3" width="67%"><span style="font-family: arial;">Tax @ 4.00%</span>
         </td>
-         <!--Sales tax-->
+           <!--Sales tax-->
         <td width="54%" style="text-align: right;">
           \$${tax.toFixed(2)}
         </td>
       </tr>
       <tr>
         <td style="text-align: left;" colspan="3" width="67%"><span style="font-family: arial;">Shipping</span></td>
-         <!--Shipping Costs-->
+           <!--Shipping Costs-->
         <td width="54%" style="text-align: right;">
          \$${shipping.toFixed(2)}
         </td>
       </tr>
       <tr>
         <td style="text-align: left;" colspan="3" width="67%"><strong>Total</stirong></td>
-         <!--Total-->
+           <!--Total-->
         <td width="54%" style="text-align: right;"><strong>$${total.toFixed(2)}</strong></td>
       </tr>
     </tbody>
   </table>
 
-   <!--Input and format shipping note at bottom -->
+<!--Input and format shipping note at bottom -->
   <div style="background-color: gray; height: 105px; vertical-align:center; padding: 2em; font-size: 18px">
       <b>SHIPPING POLICY</b> 
       <br> A subtotal under $100 will have 10% shipping costs to compensate cost of shipping from an island<br>
