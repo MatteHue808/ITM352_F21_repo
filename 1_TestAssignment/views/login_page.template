@@ -1,0 +1,46 @@
+<!--Author Meghan Nagai-->
+<!--Adapted from Lab14 Ex4-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Links to login and invoice css formatting-->
+    <link rel="stylesheet" href="./login_registration_style.css">
+    <script>window.onload = function () { ${ incorrect_login } }</script>
+    <title>Login Page</title>
+
+</head>
+<body>
+<h1>Before Continuing with your purchase, please login in!</h1>
+
+<div>
+<!--Adapted from Lab 14 Ex4: Display's the user login form-->
+<h2>Please enter your Username and Password in the Boxes Below</h2>
+<form action="process_login" method="POST">
+<ul>
+<!--username form-->
+<li><label for="username"><b>Username</b></label></li><br>
+<li><input type="text" name="username" size="40" placeholder="enter username" id="username" required value="${typeof request.body.username != 'undefined' ? request.body.username : ''}"></li>
+<!--display username errors if there are any-->
+<span style="color:red;">${incorrect_username.join(",")}</span><br>
+
+<!--password form-->
+<li><label for="password"><b>Password</b></label></li><br>
+<li><input type="password" name="password" size="40" placeholder="enter" password id="password" required value="${typeof request.body.username != 'undefined' ? request.body.username : ''}"></li>
+<!--display password errors if there are any-->
+<span style="color:red;">${incorrect_password.join(",")}</span><br>
+
+<!--Format the submit button-->
+<li><input type="submit" value="Login"
+    style="height:30px; width:100px; margin:auto 0; text-align: center; background-color: palevioletred; font-size: 18px;  font-weight: 300; float: left"
+    name="submit_button"></li>
+</ul>
+</form>
+</div>
+<!--Redirect user to the registration page-->
+<div class="login_redirect">
+<p>Don't have an account? <a href="/register">Click here to register</a>.</p>
+</div>
+</body>
+</html>

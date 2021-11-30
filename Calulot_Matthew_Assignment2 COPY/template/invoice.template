@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--Author Name: Matthew Calulot-->
+<html lang="en">
+
+<head>
+<!--Use invoice-style.css and stylesheet and take data from product_data.js-->
+<!--Adapted from Invoice4 WOD-->
+  <link rel="stylesheet" href="./invoice-style.css">
+  <script src="./product_data.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receipt</title>
+  <!--Personalized thank you message for user-->
+  <h1>Thank you ${POST.username} for supporting Matt's Pen Emporium. Please enjoy writing!</h1>
+</head>
+
+<body>
+  <table>
+    <tbody>
+    <div>
+    <!--Headings of each element-->
+      <tr>
+        <th style="text-align: center;" width="43%">Item</th>
+        <th style="text-align: center;" width="11%">Quantity</th>
+        <th style="text-align: center;" width="13%">Price</th>
+        <th style="text-align: center;" width="54%">Extended Price</th>
+      </tr>
+    </div>
+
+<!--Compute the amounts using the server-->
+    ${invoice_rows}
+
+      <tr>
+        <td colspan="4" width="100%">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;" colspan="3" width="67%">Sub-total</td>
+          <!--Subtotal-->
+        <td width="54%" style="text-align: right;">$${subtotal.toFixed(2)}
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align: left;" colspan="3" width="67%"><span style="font-family: arial;">Tax @ 4.00%</span>
+        </td>
+           <!--Sales tax-->
+        <td width="54%" style="text-align: right;">
+          \$${tax.toFixed(2)}
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align: left;" colspan="3" width="67%"><span style="font-family: arial;">Shipping</span></td>
+           <!--Shipping Costs-->
+        <td width="54%" style="text-align: right;">
+         \$${shipping.toFixed(2)}
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align: left;" colspan="3" width="67%"><strong>Total</stirong></td>
+           <!--Total-->
+        <td width="54%" style="text-align: right;"><strong>$${total.toFixed(2)}</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+<!--Input and format shipping note at bottom -->
+  <div style="background-color: gray; height: 105px; vertical-align:center; padding: 2em; font-size: 18px">
+      <b>SHIPPING POLICY</b> 
+      <br> A subtotal under $100 will have 10% shipping costs to compensate cost of shipping from an island<br>
+      We offer free complementary shipping for any orders over $100 (Thank you for your support!)<br>
+      
+  </div>
+</body>
+
+</html>
