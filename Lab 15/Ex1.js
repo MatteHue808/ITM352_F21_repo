@@ -1,11 +1,24 @@
-var userdate = require('./user_data.json');
 var fs = require('fs');
 var filename = 'user_data.json'
-
 var express = require('express');
 var app = express();
 var myParser = require("body-parser");
+var cookieParser = require('cookie-parser'); // Makes cookie date appear from request
+app.use(cookieParser());
 
+// Add route to handle GET to set_cookie
+app.get('/set_cookie', function (request, response) {
+    response.cookie('name', 'Matthew', {maxAge: 5 * 1000}); // server responds with a cookie
+    response.send('The name cookie has been sent!');
+});
+
+// Add route to handle GET to use_cookie
+app.get("/use_cookie", function (request, response) {
+    console.log (request.cookies);
+    response.send (`Welcome to the Use Cookie page ${ request.cookies.name}`); // Server is using the cookie, but the browser stores the cookie too
+});
+
+// Checks if file exists before reading
 if( fs.existsSync(filename)) {
     var stats = fs.statSync(filename);
     console.log(filename + ' has ' + stats["size"] + ' characters ');
@@ -19,6 +32,8 @@ if( fs.existsSync(filename)) {
 
 app.use(express.urlencoded({ extended: true }));
 
+
+// Route to /register
 app.get("/register", function (request, response) {
     // Give a simple register form
     str = `
