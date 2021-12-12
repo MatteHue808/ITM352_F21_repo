@@ -52,7 +52,7 @@ app.all('*', function (request, response, next) {
             console.log(quantity_data);
         // Subtract from inventory using quantities
         for (i = 0; i < products_array.length; i++) {
-            products_array[i].quantity_available -= Number(POST['quantity' + i]);
+            products_array[i].quantity_available -= Number(POST['qty' + i]);
         }
         // Creates variables for potential errors (assumes no errors initially)
         var incorrect_login = [];
