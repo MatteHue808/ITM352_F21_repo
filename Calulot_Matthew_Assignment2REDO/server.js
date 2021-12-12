@@ -4,7 +4,7 @@ var app = express(); // Sets the express module as the app
 var myParser = require("body-parser");
 var fs = require('fs');// Load fs model to allow server.js to use an template (referenced at bottom)
 const user_data = 'user_data.json';// Stores user_data.json as a variable
-var data = require('./public/product_data.js');// Loads products_data.js
+var data = require(__dirname + '/product_data.js');// Loads products_data.js
 var products_array = data.products_array;// Defines products_array variable
 var quantity_data; // Defines quantity_data variable for functions
 // Author Name: Matthew Calulot
@@ -13,7 +13,12 @@ app.all('*', function (request, response, next) {
     console.log(request.method + ' to ' + request.path);
     next();
  });
- 
+
+ // Make a microservice to supply the product object from here
+ app.get('/product_data.js', function (request, response, next) {
+    response.type("js");
+    response.send(`var products_array = ${JSON.stringify(products_array)}`)
+ });
 // Take the data in the body (allows you to get the POST data) and turns it into an object.
  app.use(express.urlencoded({ extended: true })); 
 
@@ -21,38 +26,38 @@ app.all('*', function (request, response, next) {
  // If the quantities are valid, display invoice. If not, send back to products_display
  app.post("/purchase", function (request, response) {
  //if there are quantities and there are no error display the invoice if not then alert 
+    
+    quantity_data = request.body;
+    console.log(request.body);
     // Assume no errors at first
-    // Set each product's inventory to 100
-    products_array.forEach((prod, i) => { prod.products_array = 100 });
-    let POST = request.body;
-    console.log(request.body);
     var errorsfound = false;
-    console.log(request.body);
     // Assume no quantities at first
     var quantitiesfound = false;    
     // Assume that there are quantities available
     var quantitiesavailable = true;
     // Check if no errors, if error is false, check if has quantities if there are, check if products are in stock (modified function in Invoice 4 WOD)
-    for (i in products_array) {
-        qty = request.body[`quantity${i}`];
+    for (let i in products_array) {
+        let qty = request.body[`quantity${i}`];
+        // Check if the quantity is available!
+        if (qty > products_array[i].quantity_available) {
+            quantitiesavailable = false;
+        }
+        // Check if this quantity is non neg int
         if (isStringNonNegInt(qty) == false) {
             errorsfound = true;
         }
+        // Check if we have at least 1
         if(qty > 0) {
             quantitiesfound = true;
         }
     }
-        if (qty > products_array[i].quantity_available) {
-            quantitiesavailable = false;
-    }
     // If quantities are found and no errors are found in the textbox, then generate an invoice, otherwise, send an error alert!
-        if (errorsfound == false && quantitiesfound == true && quantitiesavailable == false) {
+        if (errorsfound == false && quantitiesfound == true && quantitiesavailable == true) {
         // Sets quantity_data variable to POST
-            quantity_data = POST;
-            console.log(quantity_data);
+            
         // Subtract from inventory using quantities
         for (i = 0; i < products_array.length; i++) {
-            products_array[i].quantity_available -= Number(POST['qty' + i]);
+            products_array[i].quantity_available -= Number(request.body[`quantity${i}`]);
         }
         // Creates variables for potential errors (assumes no errors initially)
         var incorrect_login = [];
@@ -60,24 +65,24 @@ app.all('*', function (request, response, next) {
         var incorrect_username = [];
 
         // Displays the login page
-        var contents = fs.readFileSync('./template/login_page.template', 'utf8'); // Uses template from template folder for formatting
+        var contents = fs.readFileSync(__dirname + '/template/login_page.template', 'utf8'); // Uses template from template folder for formatting
         response.send(eval('`' + contents + '`'));
-        for (i = 0; i < products_array.length; i++) {
-        products_array[i].quantity_available -= Number(qty);
-    }
+        
     } else {// If there are errors then show error
-        response_string="<script> alert('Invalid quantities detected. Please review your purchase.');window.history.go(-1);</script>";
-                response.send(response_string);
+        response_string="<script> alert('Invalid quantities detected. Please review your purchase.');</script>";
+        response.send(response_string);
+        response.redirect("./products_display.html");
+        location.reload()
     }
 }); 
 
-// Function that calculates values for the invoice
+// Function that calculates values for the invoice (Taken from Invoice4 WOD)
 function generate_item_rows(POST, response) {
 {
         // Subtotal is 0 at first
         subtotal = 0;
         invoice_rows = '';
-        // If quantity is greater than 0, display the invoice
+        // If quantity is greater than 0, display the invoice 
         for (i in products_array) {
             qty = quantity_data[`quantity${i}`];
             if(qty > 0) {
@@ -313,6 +318,6 @@ app.post("/process_register", function (request, response) {
 });
 
 // Routes the GET requests to the public directory
-    app.use(express.static('./public'));
+    app.use(express.static(__dirname + '/public'));
 // Allows the server to run on port 8080
     app.listen(8080, () => console.log(`listening on port 8080`)); 
