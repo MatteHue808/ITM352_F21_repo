@@ -5,7 +5,7 @@ var myParser = require("body-parser");
 var fs = require('fs');// Load fs model to allow server.js to use an template (referenced at bottom)
 const user_data = 'user_data.json';// Stores user_data.json as a variable
 var data = require('./public/product_data.js');// Loads products_data.js
-var products_array = data.products_array;// Defines products_array variable
+var products = data.products_array;// Defines products_array variable
 var quantity_data; // Defines quantity_data variable for functions
 // Author Name: Matthew Calulot
 // Monitors all requests
@@ -23,15 +23,15 @@ app.all('*', function (request, response, next) {
  //if there are quantities and there are no error display the invoice if not then alert 
     // Assume no errors at first
     // Set each product's inventory to 100
-    products_array.forEach((prod, i) => { prod.products_array = 100 });
+    products.forEach((prod, i) => { prod.products_array = 100 });
+    var errors = {};
     let POST = request.body;
     console.log(request.body);
     var errorsfound = false;
-    console.log(request.body);
     // Assume no quantities at first
-    var quantitiesfound = false;    
-    // Assume that there are quantities available
-    var quantitiesavailable = false;
+    var quantitiesfound = false;
+    // Assume that all items are in stock at first
+    var quantitiesavailable = false
     // Check if no errors, if error is false, check if has quantities if there are, check if products are in stock (modified function in Invoice 4 WOD)
     for (i in products_array) {
         qty = request.body[`quantity${i}`];
@@ -42,18 +42,20 @@ app.all('*', function (request, response, next) {
             quantitiesfound = true;
         }
     }
-        if (qty <= products_array[i].quantity_available) {
-            quantitiesavailable = true;
+        if (qty > products_array[i].quantity_available) {
+        errorsfound = true;
+    }
+        if (errors === '{}') {
+    for (i = 0; i < products.length; i++) {
+        products[i].quantity_available -= Number(POST['quantity' + i]);
+    }
     }
     // If quantities are found and no errors are found in the textbox, then generate an invoice, otherwise, send an error alert!
-        if (errorsfound == false && quantitiesfound == true && quantitiesavailable == true) {
+        if (errorsfound == false && quantitiesfound == true && stock == true) {
         // Sets quantity_data variable to POST
             quantity_data = POST;
             console.log(quantity_data);
-        // Subtract from inventory using quantities
-        for (i = 0; i < products_array.length; i++) {
-            products_array[i].quantity_available -= Number(POST['quantity' + i]);
-        }
+        // Loads login page
         // Creates variables for potential errors (assumes no errors initially)
         var incorrect_login = [];
         var incorrect_password = [];
@@ -62,13 +64,12 @@ app.all('*', function (request, response, next) {
         // Displays the login page
         var contents = fs.readFileSync('./template/login_page.template', 'utf8'); // Uses template from template folder for formatting
         response.send(eval('`' + contents + '`'));
-        for (i = 0; i < products_array.length; i++) {
-        products_array[i].quantity_available -= Number(qty);
-    }
-    } else {// If there are errors then show error
-        response_string="<script> alert('Invalid quantities detected. Please review your purchase.');window.history.go(-1);</script>";
-                response.send(response_string);
-    }
+
+        } else {// If there are errors then show error
+            response_string="<script> alert('Invalid quantities detected. Please review your purchase.');window.history.go(-1);</script>";
+                    response.send(response_string);
+        }
+
 }); 
 
 // Function that calculates values for the invoice
@@ -79,7 +80,7 @@ function generate_item_rows(POST, response) {
         invoice_rows = '';
         // If quantity is greater than 0, display the invoice
         for (i in products_array) {
-            qty = quantity_data[`quantity${i}`];
+            qty = quantity_data[`quantity` + i];
             if(qty > 0) {
                 // Generates the item rows for products -> Taken from Invoice4 WOD
                 extended_price = qty * products_array[i].price
