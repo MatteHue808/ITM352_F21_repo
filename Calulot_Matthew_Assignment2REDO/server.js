@@ -1,4 +1,5 @@
 
+// Author Name: Matthew Calulot
 var express = require('express'); // Enables express module 
 var app = express(); // Sets the express module as the app 
 var myParser = require("body-parser");
@@ -7,7 +8,6 @@ const user_data = 'user_data.json';// Stores user_data.json as a variable
 var data = require(__dirname + '/product_data.js');// Loads products_data.js
 var products_array = data.products_array;// Defines products_array variable
 var quantity_data; // Defines quantity_data variable for functions
-// Author Name: Matthew Calulot
 // Monitors all requests
 app.all('*', function (request, response, next) {
     console.log(request.method + ' to ' + request.path);
