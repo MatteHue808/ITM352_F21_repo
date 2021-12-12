@@ -31,7 +31,7 @@ app.all('*', function (request, response, next) {
     // Assume no quantities at first
     var quantitiesfound = false;    
     // Assume that there are quantities available
-    var quantitiesavailable = false;
+    var quantitiesavailable = true;
     // Check if no errors, if error is false, check if has quantities if there are, check if products are in stock (modified function in Invoice 4 WOD)
     for (i in products_array) {
         qty = request.body[`quantity${i}`];
@@ -42,11 +42,11 @@ app.all('*', function (request, response, next) {
             quantitiesfound = true;
         }
     }
-        if (qty <= products_array[i].quantity_available) {
-            quantitiesavailable = true;
+        if (qty > products_array[i].quantity_available) {
+            quantitiesavailable = false;
     }
     // If quantities are found and no errors are found in the textbox, then generate an invoice, otherwise, send an error alert!
-        if (errorsfound == false && quantitiesfound == true && quantitiesavailable == true) {
+        if (errorsfound == false && quantitiesfound == true && quantitiesavailable == false) {
         // Sets quantity_data variable to POST
             quantity_data = POST;
             console.log(quantity_data);
