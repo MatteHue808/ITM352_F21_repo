@@ -1,0 +1,22 @@
+{
+    "itm352": {
+        "fullname": "itm352",
+        "password": "grader",
+        "email": "itm352@gmail.com"
+    },
+    "Matthew Calulot": {
+        "fullname": "Matthew Calulot",
+        "password": "bestpassword",
+        "email": "calulotm@hawaii.edu"
+    },
+    "calulotm": {
+        "fullname": "calulotm",
+        "password": "otherpassword",
+        "email": "calulotm@hawaii.edu"
+    },
+    "username": {
+        "fullname": "username",
+        "password": "password",
+        "email": "test@hawaii.edu"
+    }
+}
