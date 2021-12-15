@@ -45,7 +45,7 @@ app.post("/display_cart", function (request, response) { // Posts data from the 
     }
 });
 
-// Heavily adapted from app.posts in Assignment 2 and 3
+// Heavily adapted and modified from app.posts in Assignment 2 and 3
  app.post("/purchase", function (request, response) {
     let POST = request.body;
 
@@ -419,7 +419,7 @@ invoice_str += `
 var mailOptions = {
     from: 'calulotm@hawaii.edu', // My email to test
     to: user_email,
-    subject: 'Your phoney invoice',
+    subject: 'Thank you for shopping at Matts Pen Emporium!',
     html: invoice_str
 };
 
